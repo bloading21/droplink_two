@@ -529,6 +529,7 @@
     overflow: hidden;
     user-select: text;
     margin-top: 40px;
+
 }
 
 .shopify_logo_icon,
@@ -1111,6 +1112,26 @@
 
 .mehr_erfahren:hover img {
     transform: translateX(7px);
+}
+
+.section_triple_card{
+    width: 90vw;
+    border-radius: 16px;
+    height: 500px;
+    margin: auto;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.triple_card_one,
+.triple_card_two,
+.triple_card_three{
+    width: 32%;
+    height: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
 }
 
 .section_quad{
