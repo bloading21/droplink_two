@@ -338,3 +338,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
+
+
+
+
+(function() {
+  const DURATION_MS = 1000; // langsamer: 2 Sekunden
+  const EASE = t => 1 - Math.pow(1 - t, 3); // Ease-out-cubic
+
+  function animateCount(el) {
+    return new Promise(resolve => {
+      const numEl = el.querySelector('.num');
+      const target = parseFloat(el.getAttribute('data-target') || '100');
+      const start = 0;
+      const startTime = performance.now();
+
+      function frame(now) {
+        const t = Math.min(1, (now - startTime) / DURATION_MS);
+        const eased = EASE(t);
+        const value = Math.round(start + (target - start) * eased);
+        numEl.textContent = value.toString();
+        if (t < 1) {
+          requestAnimationFrame(frame);
+        } else {
+          resolve();
+        }
+      }
+      requestAnimationFrame(frame);
+    });
+  }
+
+  const counters = document.querySelectorAll('.counter');
+  let started = false;
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !started) {
+        started = true;
+        // Nacheinander animieren
+        (async () => {
+          for (const counter of counters) {
+            await animateCount(counter);
+          }
+        })();
+      }
+    });
+  }, { threshold: 0.4 });
+
+  counters.forEach(el => io.observe(el));
+})();

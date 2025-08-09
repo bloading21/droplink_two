@@ -529,6 +529,8 @@
     overflow: hidden;
     user-select: text;
     margin-top: 40px;
+    max-width: 1300px;
+    border-radius: 26px;
 
 }
 
@@ -545,21 +547,21 @@
     position: absolute;
     top: 70px;
     left: 130px;
-    left: max(70px, calc((100vw - 1400px) / 2));
+    left: max(70px, calc((80vw - 1400px) / 2));
 }
 
 .ebay_icon_logo{
     position: absolute;
     top: 80px;
     right: 130px;
-    right: max(70px, calc((100vw - 1400px) / 2));
+    right: max(70px, calc((80vw - 1400px) / 2));
 }
 
 .amazon_logo_icon{
     position: absolute;
     bottom: 70px;
     left: 230px;
-    left: max(70px, calc((100vw - 1227px) / 2));
+    left: max(210px, calc((80vw - 1227px) / 2));
 
 }
 
@@ -567,7 +569,7 @@
     position: absolute;
     bottom: 70px;
     right: 230px;
-    right: max(70px, calc((100vw - 1227px) / 2));
+    right: max(210px, calc((80vw - 1227px) / 2));
 }
 
 
@@ -778,11 +780,12 @@
     width: 50%;
     padding-right: 20px;
     height: 80%;
+    padding-left: 18px;
   }
 
   .feature_content .left h1{
-    padding-left: 18px;
     padding-bottom: 30px;
+
   }
   
   .feature_content .right {
@@ -832,14 +835,14 @@
 .section_z,
 .section_adlibrary{
     width: 90vw;
-    max-width: 1200px;
+    max-width: 1130px;
     height: 480px;
     height: fit-content;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: auto;
-    margin-top: 80px;
+    margin-top: 70px;
     border: 1px solid var(--border-color);
     padding: 35px;
     border-radius: 16px;
@@ -985,6 +988,7 @@
 .section_z h1,
 .section_adlibrary h1{
     font-size: 28px;
+    color: var(--primary-color);
 }
 
 
@@ -1090,6 +1094,7 @@
     transition: 0.2s ease-in-out;
     font-weight: 550;
     display: none;
+    
 
 
 }
@@ -1117,12 +1122,39 @@
 .section_triple_card{
     width: 90vw;
     border-radius: 16px;
-    height: 500px;
+    height: 250px;
     margin: auto;
     max-width: 1200px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 60px;
+
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); 
+
+}
+
+.section_triple_card h1{
+    font-size: 34px;
+}
+
+.section_triple_card p{
+    font-size: 30px;
+    color: #000000;
+    font-weight: 600;
+}
+
+.section_triple_card span{
+
+    background: linear-gradient(to top, #AC51FF -0%, #00000000 370%); /* Verlauf von unten (#AC51FF) nach oben (weiß) */
+    -webkit-background-clip: text;  /* Für Chrome, Safari */
+    background-clip: text;
+    -webkit-text-fill-color: transparent; /* Text transparent, zeigt den Gradient */
+    color: transparent; /* Für andere Browser */
+    line-height: 110%;
+
+    color: var(--primary-color);
+    font-size: 90px;
 }
 
 .triple_card_one,
@@ -1130,9 +1162,17 @@
 .triple_card_three{
     width: 32%;
     height: 100%;
-    border: 1px solid var(--border-color);
     border-radius: 16px;
+    box-shadow: var(--standard-box-shadow);
+    border: 1px solid var(--border-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
 }
+
+
 
 .section_quad{
     display: flex;
@@ -1144,6 +1184,7 @@
     margin: auto;
     max-width: 1200px;
     margin-top: 80px;
+    display: none;
 
 }
 
@@ -1201,6 +1242,7 @@
 .section_quad p{
     font-size: 15px;
     line-height: 150%;
+
 }
 
 .section_quad_one_left span{
@@ -1268,7 +1310,6 @@
     align-items: center;
     gap: 30px;
     position: relative;
-    display: none;
 }
 
 
@@ -1611,72 +1652,6 @@
     border-radius: 500%;
 }
 
-
-
-.section_globe{
-    width: 90%;
-    max-width: 1200px;
-    height: 550px;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 70px;
-    display: none;
-}
-
-.section_globe_left{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 50%;
-    height: 100%;
-}
-
-.globe_place{
-    width: 500px;
-    height: 500px;
-    border-radius: 100%;
-    border: 1px solid var(--border-color);
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-
-.section_globe_right{
-    display: flex;
-    justify-content: start;
-    align-items: end;
-    text-align: end;
-    flex-direction: column;
-    gap: 40px;
-    width: 40%;
-    height: 80%;
-    padding: 30px;
-}
-
-.section_globe_right h1{
-    font-size: 30px;
-}
-
-.section_globe_right_benefit{
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    gap: 10px;
-}
-
-.section_globe_right_benefit_container_dots{
-    width: 12px;
-    height: 12px;
-    background-color: #00C951;
-    border-radius: 50px;
-
-}
   
 .section_review {
     display: flex;
@@ -2173,14 +2148,12 @@
     border: 1px solid var(--primary-color);
 
     background-color: var(--primary-color);
-    background-color: #ab51ff12;
 
   }
   .dashboard_preview.active .dashboard_preview_two_child_content_imagecontainer  {
     border: 1px solid var(--primary-color);
 
     background-color: var(--primary-color);
-    background-color: #ab51ff12;
 
 
   }
@@ -2188,15 +2161,15 @@
     border: 1px solid var(--primary-color);    
 
     background-color: var(--primary-color);
-    background-color: #ab51ff12;
 
 
   }
   .dashboard_preview.active .dashboard_preview_for_child_content_imagecontainer  {
     border: 1px solid var(--primary-color);
 
-    background-color: var(--primary-color);
     background-color: #ab51ff12;
+    background-color: var(--primary-color);
+
 
 
   }
@@ -2205,22 +2178,26 @@
 
 
   .dashboard_preview.active .dashboard_preview_one_child_content_imagecontainer svg  {
-    color: white;
     color: var(--primary-color);
+    color: white;
+
   }
   .dashboard_preview.active .dashboard_preview_two_child_content_imagecontainer svg  {
-    color: white;
     color: var(--primary-color);
+    color: white;
+
 
   }
   .dashboard_preview.active .dashboard_preview_three_child_content_imagecontainer svg  {
-    color: white;
     color: var(--primary-color);
+    color: white;
+
 
   }
   .dashboard_preview.active .dashboard_preview_for_child_content_imagecontainer svg  {
-    color: white;
     color: var(--primary-color);
+    color: white;
+
 
   }
 
