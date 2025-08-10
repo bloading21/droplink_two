@@ -343,30 +343,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-(function() {
-  const DURATION_MS = 1000; // langsamer: 2 Sekunden
-  const EASE = t => 1 - Math.pow(1 - t, 3); // Ease-out-cubic
+(function () {
+  const DURATION_MS = 2000;   // Zähldauer pro Karte (2s)
+  const STAGGER_MS  = 400;    // Abstand zwischen Start von Karte 1→2→3
+  const EASE = t => 1 - Math.pow(1 - t, 3); // ease-out-cubic
 
   function animateCount(el) {
-    return new Promise(resolve => {
-      const numEl = el.querySelector('.num');
-      const target = parseFloat(el.getAttribute('data-target') || '100');
-      const start = 0;
-      const startTime = performance.now();
+    const numEl  = el.querySelector('.num');
+    const target = parseFloat(el.getAttribute('data-target') || '100');
+    const start  = 0;
+    const t0     = performance.now();
 
-      function frame(now) {
-        const t = Math.min(1, (now - startTime) / DURATION_MS);
-        const eased = EASE(t);
-        const value = Math.round(start + (target - start) * eased);
-        numEl.textContent = value.toString();
-        if (t < 1) {
-          requestAnimationFrame(frame);
-        } else {
-          resolve();
-        }
-      }
-      requestAnimationFrame(frame);
-    });
+    function frame(now) {
+      const t = Math.min(1, (now - t0) / DURATION_MS);
+      const v = Math.round(start + (target - start) * EASE(t));
+      numEl.textContent = String(v);
+      if (t < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
   }
 
   const counters = document.querySelectorAll('.counter');
@@ -376,12 +370,10 @@ document.addEventListener("DOMContentLoaded", () => {
     entries.forEach(entry => {
       if (entry.isIntersecting && !started) {
         started = true;
-        // Nacheinander animieren
-        (async () => {
-          for (const counter of counters) {
-            await animateCount(counter);
-          }
-        })();
+        counters.forEach((el, i) => {
+          setTimeout(() => animateCount(el), i * STAGGER_MS);
+        });
+        io.disconnect();
       }
     });
   }, { threshold: 0.4 });

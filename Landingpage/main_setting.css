@@ -2,7 +2,7 @@
 
 .section_eins{
     width: 100%;
-    height: 1100px;
+    height: 1110px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -137,7 +137,7 @@
     justify-content: space-between;
     align-items: center;
     border-radius: 14px;
-    margin-top: 50px;
+    margin-top: 65px;
 }
 
 .dashboard_preview_select h2{
@@ -241,6 +241,109 @@
     width: 65%;
 }
 
+  
+  /* Der Kegel */
+  .dashboard_preview.active .rotating-cone {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;     /* Länge des Kegels */
+    height: 650px;
+    background: conic-gradient(
+      #AC51FF 0deg 80deg,
+      transparent 10deg 360deg
+    );
+    transform: translate(-50%, -50%) rotate(0deg);
+    transform-origin: center center;
+    animation: rotate-cone 3.5s linear infinite;
+    border-radius: 50%;
+    z-index: 0;
+    filter: blur(10px);
+  }
+
+
+  .dashboard_preview.active .dashboard_preview_one_child_content_imagecontainer  {
+    border: 1px solid var(--primary-color);
+
+    background-color: var(--primary-color);
+
+  }
+  .dashboard_preview.active .dashboard_preview_two_child_content_imagecontainer  {
+    border: 1px solid var(--primary-color);
+
+    background-color: var(--primary-color);
+
+
+  }
+  .dashboard_preview.active .dashboard_preview_three_child_content_imagecontainer  {
+    border: 1px solid var(--primary-color);    
+
+    background-color: var(--primary-color);
+
+
+  }
+  .dashboard_preview.active .dashboard_preview_for_child_content_imagecontainer  {
+    border: 1px solid var(--primary-color);
+
+    background-color: #ab51ff12;
+    background-color: var(--primary-color);
+
+
+
+  }
+
+
+
+
+  .dashboard_preview.active .dashboard_preview_one_child_content_imagecontainer svg  {
+    color: var(--primary-color);
+    color: white;
+
+  }
+  .dashboard_preview.active .dashboard_preview_two_child_content_imagecontainer svg  {
+    color: var(--primary-color);
+    color: white;
+
+
+  }
+  .dashboard_preview.active .dashboard_preview_three_child_content_imagecontainer svg  {
+    color: var(--primary-color);
+    color: white;
+
+
+  }
+  .dashboard_preview.active .dashboard_preview_for_child_content_imagecontainer svg  {
+    color: var(--primary-color);
+    color: white;
+
+
+  }
+
+
+
+  .dashboard_preview.active h2  {
+    color: var(--primary-color);
+  }
+
+  .dashboard_preview.active   {
+    box-shadow: none;
+  }
+
+
+  /* Inhalt oben drüber */
+
+  
+  /* Rotation */
+  @keyframes rotate-cone {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+  
+
 .image_rahmen_dos{
     width: 73vw;
     max-width: 1350px;
@@ -266,12 +369,6 @@
 }
 
 
-
-
-  
-
-
-
 .image_rahmen_dos::before{
     content: "";
     position: absolute;
@@ -283,10 +380,6 @@
     z-index: -1;
     border: 1px solid var(--border-color);
     background-color: rgba(128, 128, 128, 0.043);
-
-
-
-
 }
 
 .image_rahmen_dos::after{
@@ -303,9 +396,6 @@
     background-color: #ab51ff4a;
     border-radius: 25px  25px 0 0;
     display: none;
-
-
-
 }
 
 
@@ -334,7 +424,6 @@
     box-shadow: 0 0px 0px rgba(15, 23, 42, 0); /* sehr weicher Schatten */
     border: 1px solid var(--border-color);
     background-color: #FCFCFC;
-
 }
 
 .shopify_container:hover{
@@ -366,12 +455,31 @@
 }
 
 .uper_testimonial_container{
-    width: 230px;
-    height: 40px;
+    width: fit-content;
+    height: 38px;
     border-radius: 12px;
-    border: 1px solid var(--border-color);
     margin: auto;
     margin-top: 23px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.uper_testimonial_container img{
+    height: 100%;
+}
+
+.uper_testimonial_container p{
+    font-size: 17px;
+    color: black;
+    font-weight: 500;
+}
+
+.uper_testimonial_container span{
+    font-size: 17px;
+    font-weight: 900; 
 }
 
 .login_dos{
@@ -2123,127 +2231,6 @@
 
 
 
-  
-  /* Der Kegel */
-  .dashboard_preview.active .rotating-cone {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 400px;     /* Länge des Kegels */
-    height: 650px;
-    background: conic-gradient(
-      #AC51FF 0deg 80deg,
-      transparent 10deg 360deg
-    );
-    transform: translate(-50%, -50%) rotate(0deg);
-    transform-origin: center center;
-    animation: rotate-cone 3.5s linear infinite;
-    border-radius: 50%;
-    z-index: 0;
-    filter: blur(10px);
-  }
-
-
-  .dashboard_preview.active .dashboard_preview_one_child_content_imagecontainer  {
-    border: 1px solid var(--primary-color);
-
-    background-color: var(--primary-color);
-
-  }
-  .dashboard_preview.active .dashboard_preview_two_child_content_imagecontainer  {
-    border: 1px solid var(--primary-color);
-
-    background-color: var(--primary-color);
-
-
-  }
-  .dashboard_preview.active .dashboard_preview_three_child_content_imagecontainer  {
-    border: 1px solid var(--primary-color);    
-
-    background-color: var(--primary-color);
-
-
-  }
-  .dashboard_preview.active .dashboard_preview_for_child_content_imagecontainer  {
-    border: 1px solid var(--primary-color);
-
-    background-color: #ab51ff12;
-    background-color: var(--primary-color);
-
-
-
-  }
-
-
-
-
-  .dashboard_preview.active .dashboard_preview_one_child_content_imagecontainer svg  {
-    color: var(--primary-color);
-    color: white;
-
-  }
-  .dashboard_preview.active .dashboard_preview_two_child_content_imagecontainer svg  {
-    color: var(--primary-color);
-    color: white;
-
-
-  }
-  .dashboard_preview.active .dashboard_preview_three_child_content_imagecontainer svg  {
-    color: var(--primary-color);
-    color: white;
-
-
-  }
-  .dashboard_preview.active .dashboard_preview_for_child_content_imagecontainer svg  {
-    color: var(--primary-color);
-    color: white;
-
-
-  }
-
-
-
-  .dashboard_preview.active h2  {
-    color: var(--primary-color);
-  }
-
-  .dashboard_preview.active   {
-    box-shadow: none;
-  }
-
-
-
-
-
-  
-
-  /* Inhalt oben drüber */
-
-  
-  /* Rotation */
-  @keyframes rotate-cone {
-    0% {
-      transform: translate(-50%, -50%) rotate(0deg);
-    }
-    100% {
-      transform: translate(-50%, -50%) rotate(360deg);
-    }
-  }
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  .main_badges{
+    display: none;
+}
