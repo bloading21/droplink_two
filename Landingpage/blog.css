@@ -16,6 +16,7 @@
     max-width: 1300px;
     padding-bottom: 100px;
     padding-top: 100px;
+    display: none;
   }
   
   .blogcarousel_track {

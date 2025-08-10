@@ -342,41 +342,55 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+(function() {
+  const DURATION_MS = 2000; // 2 Sekunden pro Counter
+  const START_DELAY = 300; // 0,5 Sekunden zwischen den Starts
+  const EASE = t => 1 - Math.pow(1 - t, 3); // Ease-out-Cubic
 
-(function () {
-  const DURATION_MS = 2000;   // Zähldauer pro Karte (2s)
-  const STAGGER_MS  = 400;    // Abstand zwischen Start von Karte 1→2→3
-  const EASE = t => 1 - Math.pow(1 - t, 3); // ease-out-cubic
+  function animateCount(el, delay) {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        const numEl = el.querySelector('.num');
+        const target = parseFloat(el.getAttribute('data-target') || '100');
+        const startTime = performance.now();
 
-  function animateCount(el) {
-    const numEl  = el.querySelector('.num');
-    const target = parseFloat(el.getAttribute('data-target') || '100');
-    const start  = 0;
-    const t0     = performance.now();
-
-    function frame(now) {
-      const t = Math.min(1, (now - t0) / DURATION_MS);
-      const v = Math.round(start + (target - start) * EASE(t));
-      numEl.textContent = String(v);
-      if (t < 1) requestAnimationFrame(frame);
-    }
-    requestAnimationFrame(frame);
+        function frame(now) {
+          const t = Math.min(1, (now - startTime) / DURATION_MS);
+          const eased = EASE(t);
+          numEl.textContent = String(Math.round(target * eased));
+          if (t < 1) {
+            requestAnimationFrame(frame);
+          } else {
+            resolve();
+          }
+        }
+        requestAnimationFrame(frame);
+      }, delay);
+    });
   }
 
   const counters = document.querySelectorAll('.counter');
   let started = false;
 
-  const io = new IntersectionObserver(entries => {
+  const io = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting && !started) {
+      if (started) return;
+      if (entry.isIntersecting) {
         started = true;
-        counters.forEach((el, i) => {
-          setTimeout(() => animateCount(el), i * STAGGER_MS);
+
+        counters.forEach((counter, i) => {
+          animateCount(counter, i * START_DELAY);
         });
+
         io.disconnect();
       }
     });
-  }, { threshold: 0.4 });
+  }, {
+    root: null,
+    rootMargin: "-35% 0px -35% 0px", // mittlere 30% vom Viewport
+    threshold: 0
+  });
 
-  counters.forEach(el => io.observe(el));
+  const firstCard = document.querySelector('.triple_card_one');
+  if (firstCard) io.observe(firstCard);
 })();

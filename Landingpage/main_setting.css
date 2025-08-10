@@ -457,7 +457,7 @@
 .uper_testimonial_container{
     width: fit-content;
     height: 38px;
-    border-radius: 12px;
+    border-radius: 29px;
     margin: auto;
     margin-top: 23px;
     display: flex;
@@ -468,7 +468,7 @@
 }
 
 .uper_testimonial_container img{
-    height: 100%;
+    height: 90%;
 }
 
 .uper_testimonial_container p{
@@ -953,7 +953,7 @@
     margin-top: 70px;
     border: 1px solid var(--border-color);
     padding: 35px;
-    border-radius: 16px;
+    border-radius: 25px;
     box-shadow: var(--standard-box-shadow);
     
 }
@@ -1254,14 +1254,7 @@
 
 .section_triple_card span{
 
-    background: linear-gradient(to top, #AC51FF -0%, #00000000 370%); /* Verlauf von unten (#AC51FF) nach oben (weiß) */
-    -webkit-background-clip: text;  /* Für Chrome, Safari */
-    background-clip: text;
-    -webkit-text-fill-color: transparent; /* Text transparent, zeigt den Gradient */
-    color: transparent; /* Für andere Browser */
-    line-height: 110%;
 
-    color: var(--primary-color);
     font-size: 90px;
 }
 
@@ -2232,5 +2225,4 @@
 
 
   .main_badges{
-    display: none;
 }
