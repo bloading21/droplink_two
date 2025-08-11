@@ -435,9 +435,7 @@
     color: black;
 }
 
-.shopify_container img{
-    width: 23px;
-}
+
 
 .shopify_link{
     font-size: 22px;
@@ -532,9 +530,6 @@
 
 }
 
-.chrome_extension_button img{
-    height:25px;
-}
 
 .testen_dos:hover{
     opacity: 0.9;
@@ -656,6 +651,13 @@
     top: 70px;
     left: 130px;
     left: max(70px, calc((80vw - 1400px) / 2));
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 85px;
+    height: 85px;
 }
 
 .ebay_icon_logo{
@@ -663,6 +665,13 @@
     top: 80px;
     right: 130px;
     right: max(70px, calc((80vw - 1400px) / 2));
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 85px;
+    height: 85px;
 }
 
 .amazon_logo_icon{
@@ -671,6 +680,13 @@
     left: 230px;
     left: max(210px, calc((80vw - 1227px) / 2));
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 85px;
+    height: 85px;
+
 }
 
 .woocomerce_icon_logo{
@@ -678,6 +694,13 @@
     bottom: 70px;
     right: 230px;
     right: max(210px, calc((80vw - 1227px) / 2));
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 85px;
+    height: 85px;
 }
 
 
@@ -951,10 +974,9 @@
     align-items: center;
     margin: auto;
     margin-top: 70px;
-    border: 1px solid var(--border-color);
     padding: 35px;
     border-radius: 25px;
-    box-shadow: var(--standard-box-shadow);
+    
     
 }
 
@@ -984,10 +1006,7 @@
 
 }
 
-.section_y_content_badge img{
-    width: 23px;
-    
-}
+
 
 
 
@@ -1047,7 +1066,6 @@
     justify-content: center;
     text-align: start;
     align-items: start;
-
     gap: 20px;
 
 }
@@ -1085,8 +1103,9 @@
 .section_y_content p,
 .section_z_content p,
 .section_adlibrary_content p{
-    font-size: 18px;
-    line-height: 130%;
+    font-size: 20px;
+    line-height: 150%;
+    color: #333333;
 }
 
 
@@ -1095,8 +1114,8 @@
 .section_y h1,
 .section_z h1,
 .section_adlibrary h1{
-    font-size: 28px;
-    color: var(--primary-color);
+    font-size: 32px;
+    color: #333333;
 }
 
 
@@ -1244,6 +1263,7 @@
 
 .section_triple_card h1{
     font-size: 34px;
+    color: #333333;
 }
 
 .section_triple_card p{
@@ -2225,4 +2245,13 @@
 
 
   .main_badges{
+    top: -60px;
+    left: 0;
+
 }
+
+
+
+
+
+

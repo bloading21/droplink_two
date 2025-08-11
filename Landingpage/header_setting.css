@@ -38,12 +38,11 @@ nav ul {
 
 /* Icons */
 .nav_icon {
-    width: 16px;
-    height: 16px;
     margin-left: 5px;
     vertical-align: middle;
     transition: transform 0.3s ease;
     display: inline-block;
+
 }
 .nav_icon.rotate {
     transform: rotate(180deg);
