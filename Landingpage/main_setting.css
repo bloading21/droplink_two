@@ -232,6 +232,12 @@
     align-items: center;
     box-shadow: var(--standard-box-shadow);
 
+
+    background-color: #ab51ff12;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    border: 1px solid #ab51ff00;
+
 }
 
 .dashboard_preview_one_child_content_imagecontainer img,
@@ -966,7 +972,7 @@
 .section_z,
 .section_adlibrary{
     width: 90vw;
-    max-width: 1130px;
+    max-width: 1300px;
     height: 480px;
     height: fit-content;
     display: flex;
@@ -1221,9 +1227,6 @@
     transition: 0.2s ease-in-out;
     font-weight: 550;
     display: none;
-    
-
-
 }
 
 .mehr_erfahren_span{
@@ -1235,14 +1238,14 @@
     
 }
 
-.mehr_erfahren img{
+.mehr_erfahren svg{
     padding-top: 2px;
     width: 14%;
     transition: transform 0.3s ease;
 }
 
 
-.mehr_erfahren:hover img {
+.mehr_erfahren:hover svg {
     transform: translateX(7px);
 }
 
@@ -1251,7 +1254,7 @@
     border-radius: 16px;
     height: 250px;
     margin: auto;
-    max-width: 1200px;
+    max-width: 1300px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -2247,6 +2250,7 @@
   .main_badges{
     top: -60px;
     left: 0;
+    display: none;
 
 }
 
