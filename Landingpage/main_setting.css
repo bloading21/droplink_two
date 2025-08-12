@@ -1122,6 +1122,7 @@
 .section_adlibrary h1{
     font-size: 32px;
     color: #333333;
+    color: var(--primary-color);
 }
 
 
@@ -1209,10 +1210,6 @@
     
     display: none;
 }
-
-
-
-
 
 .section_zwei_box{
     text-align: center;

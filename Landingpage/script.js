@@ -99,43 +99,43 @@ tabs.forEach((tab, i) => {
 
 
 
-//WILD TIME LINE CARDS
+
+
 const wildSteps = document.querySelectorAll('.wild-step');
 const wildLine = document.querySelector('.wild-timeline-line');
 
-window.addEventListener('scroll', () => {
-  const scrollTop = window.scrollY + window.innerHeight / 2;
-  const lineTop = wildLine.getBoundingClientRect().top + window.scrollY;
-  const lineHeight = wildLine.offsetHeight;
-  const progress = Math.min(1, (scrollTop - lineTop) / lineHeight);
-  wildLine.style.setProperty('--wild-line-progress', `${progress * 100}%`);
-
-  wildSteps.forEach(step => {
-    const boxTop = step.getBoundingClientRect().top + window.scrollY;
-    const boxHeight = step.offsetHeight;
-    const card = step.querySelector('.wild-card');
-
-    if (scrollTop > boxTop + boxHeight / 3) {
-      card.classList.add('active');
-    } else {
-      card.classList.remove('active');
-    }
-  });
-});
-
-
-
 let ticking = false;
 
-window.addEventListener('scroll', () => {
-  if (!ticking) {
-    window.requestAnimationFrame(() => {
-      updateScrollTimeline(); // hier ist dein Code drin
-      ticking = false;
+function onScroll() {
+  if (ticking) return;
+  ticking = true;
+
+  requestAnimationFrame(() => {
+    // Fortschritt mit transform (scaleY)
+    const r = wildLine.getBoundingClientRect();
+    const viewportMid = window.innerHeight / 2;
+    const progress = Math.min(1, Math.max(0, (viewportMid - r.top) / r.height));
+    wildLine.style.setProperty('--wild-progress', progress);
+
+    // Cards aktivieren/deaktivieren
+    const triggerY = window.innerHeight * 0.4; // 60% der Viewport-Höhe
+    wildSteps.forEach(step => {
+      const stepRect = step.getBoundingClientRect();
+      const card = step.querySelector('.wild-card');
+      if (!card) return;
+      if (stepRect.top < triggerY) card.classList.add('active');
+      else card.classList.remove('active');
     });
-    ticking = true;
-  }
-});
+
+    ticking = false;
+  });
+}
+
+window.addEventListener('scroll', onScroll, { passive: true });
+window.addEventListener('resize', onScroll, { passive: true });
+document.addEventListener('DOMContentLoaded', onScroll);
+
+
 
 
 

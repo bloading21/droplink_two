@@ -280,7 +280,7 @@ nav li a:hover {
     font-weight: bold;
 }
 .testen:hover {
-    opacity: 0.9;
+    background-color: #B663FF;
 }
 
 .login_buttons_nav {
