@@ -101,120 +101,40 @@ tabs.forEach((tab, i) => {
 
 
 
-(function () {
-  if (!window.matchMedia('(max-width: 768px)').matches) return;
+const wildSteps = document.querySelectorAll('.wild-step');
+const wildLine = document.querySelector('.wild-timeline-line');
 
-  const docEl     = document.documentElement;
-  const line      = document.querySelector('.wild-timeline-line');
-  const section   = document.querySelector('.wild-timeline-sec');
-  const steps     = document.querySelectorAll('.wild-step');
-  if (!line || !section) return;
+let ticking = false;
 
-  // Füll-Element einmalig anlegen (kein HTML anpassen nötig)
-  let fill = line.querySelector('.wild-fill');
-  if (!fill) {
-    fill = document.createElement('div');
-    fill.className = 'wild-fill';
-    line.appendChild(fill);
-  }
+function onScroll() {
+  if (ticking) return;
+  ticking = true;
 
-  let ticking = false;
-  let lastP = -1;
+  requestAnimationFrame(() => {
+    // Fortschritt für die rosa Linie (::before via scaleY)
+    const r = wildLine.getBoundingClientRect();
+    const viewportMid = window.innerHeight / 2;
+    const progress = Math.min(1, Math.max(0, (viewportMid - r.top) / r.height));
+    wildLine.style.setProperty('--wild-progress', progress);
 
-  function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
-
-  function onScrollMobile() {
-    if (ticking) return;
-    ticking = true;
-
-    requestAnimationFrame(() => {
-      // Stabil: Layout-Viewport statt innerHeight (Adressleiste ≠ Problem mehr)
-      const viewportH  = docEl.clientHeight;
-      const viewportMid = window.scrollY + viewportH * 0.5;
-
-      // Fortschritt relativ zur ganzen Section (Line hat gleiche Höhe)
-      const secRectTop = section.getBoundingClientRect().top + window.scrollY;
-      const secHeight  = section.offsetHeight;
-
-      let p = (viewportMid - secRectTop) / secHeight;
-      p = clamp(p, 0, 1);
-
-      // Quantisieren reduziert Repaints (0.1%-Steps)
-      p = Math.round(p * 1000) / 1000;
-
-      if (p !== lastP) {
-        // Für’s CSS verfügbar (falls du’s brauchst)
-        line.style.setProperty('--wild-progress-mobile', p);
-        // Sichtbare Höhe setzen (smooth & flackerfrei)
-        fill.style.height = (p * 100) + '%';
-        lastP = p;
-      }
-
-      // Deine Card-Activation (leicht angepasst auf die stabile Höhe)
-      const triggerY = window.scrollY + viewportH * 0.4;
-      steps.forEach(step => {
-        const card = step.querySelector('.wild-card');
-        if (!card) return;
-        const top = step.getBoundingClientRect().top + window.scrollY;
-        if (top < triggerY) card.classList.add('active');
-        else card.classList.remove('active');
-      });
-
-      ticking = false;
+    // Cards aktivieren/deaktivieren
+    const triggerY = window.innerHeight * 0.4;
+    wildSteps.forEach(step => {
+      const stepRect = step.getBoundingClientRect();
+      const card = step.querySelector('.wild-card');
+      if (!card) return;
+      if (stepRect.top < triggerY) card.classList.add('active');
+      else card.classList.remove('active');
     });
-  }
 
-  window.addEventListener('scroll', onScrollMobile, { passive: true });
-  window.addEventListener('resize', onScrollMobile, { passive: true });
-  window.addEventListener('orientationchange', onScrollMobile);
-  document.addEventListener('DOMContentLoaded', onScrollMobile);
-})();
-// ==== Desktop Timeline Progress (setzt --wild-progress für ::before) ====
-(function () {
-  if (window.matchMedia('(max-width: 768px)').matches) return;
+    ticking = false;
+  });
+}
 
-  const wildSteps = document.querySelectorAll('.wild-step');
-  const wildLine  = document.querySelector('.wild-timeline-line');
-  if (!wildLine) return;
+window.addEventListener('scroll', onScroll, { passive: true });
+window.addEventListener('resize', onScroll, { passive: true });
+document.addEventListener('DOMContentLoaded', onScroll);
 
-  let ticking = false;
-  let lastP = -1;
-  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
-
-  function onScrollDesktop() {
-    if (ticking) return;
-    ticking = true;
-
-    requestAnimationFrame(() => {
-      const r = wildLine.getBoundingClientRect();
-      const viewportMid = window.innerHeight / 2;
-
-      let p = clamp((viewportMid - r.top) / r.height, 0, 1);
-      // leicht quantisieren = weniger Repaints
-      p = Math.round(p * 1000) / 1000;
-
-      if (p !== lastP) {
-        wildLine.style.setProperty('--wild-progress', p);
-        lastP = p;
-      }
-
-      // deine Card-Aktivierung wie gehabt
-      const triggerY = window.innerHeight * 0.4;
-      wildSteps.forEach(step => {
-        const card = step.querySelector('.wild-card');
-        if (!card) return;
-        const s = step.getBoundingClientRect();
-        (s.top < triggerY) ? card.classList.add('active') : card.classList.remove('active');
-      });
-
-      ticking = false;
-    });
-  }
-
-  window.addEventListener('scroll', onScrollDesktop, { passive: true });
-  window.addEventListener('resize', onScrollDesktop, { passive: true });
-  document.addEventListener('DOMContentLoaded', onScrollDesktop);
-})();
 
 
 
