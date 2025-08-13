@@ -102,29 +102,53 @@ tabs.forEach((tab, i) => {
 
 
 const wildSteps = document.querySelectorAll('.wild-step');
-const wildLine = document.querySelector('.wild-timeline-line');
+const wildLine  = document.querySelector('.wild-timeline-line');
 
 let ticking = false;
+let lastProgress = -1;
 
-function onScroll() {
+function clamp(v, min, max){ return Math.max(min, Math.min(max, v)); }
+
+// Viewport-Mitte robust (visualViewport auf Mobile)
+function getViewportMidY(){
+  const vv = window.visualViewport;
+  return (vv ? vv.height : window.innerHeight) / 2 + window.scrollY;
+}
+
+// Element-Top relativ zum Dokument, stabiler als nur getBoundingClientRect() pur
+function topInDoc(el){
+  const r = el.getBoundingClientRect();
+  return r.top + window.scrollY;
+}
+
+function onScroll(){
   if (ticking) return;
   ticking = true;
 
   requestAnimationFrame(() => {
-    // Fortschritt mit transform (scaleY)
-    const r = wildLine.getBoundingClientRect();
-    const viewportMid = window.innerHeight / 2;
-    const progress = Math.min(1, Math.max(0, (viewportMid - r.top) / r.height));
-    wildLine.style.setProperty('--wild-progress', progress);
+    const lineTop    = topInDoc(wildLine);
+    const lineHeight = wildLine.offsetHeight || wildLine.getBoundingClientRect().height;
+    const viewportMid = getViewportMidY();
+
+    let progress = clamp((viewportMid - lineTop) / lineHeight, 0, 1);
+
+    // quantisieren = weniger Repaints (0.1%-Schritte)
+    progress = Math.round(progress * 1000) / 1000;
+
+    if (progress !== lastProgress) {
+      wildLine.style.setProperty('--wild-progress', progress);
+      lastProgress = progress;
+    }
 
     // Cards aktivieren/deaktivieren
-    const triggerY = window.innerHeight * 0.4; // 60% der Viewport-Höhe
+    const vh = (window.visualViewport?.height || window.innerHeight);
+    const triggerY = window.scrollY + vh * 0.4;
+
     wildSteps.forEach(step => {
-      const stepRect = step.getBoundingClientRect();
       const card = step.querySelector('.wild-card');
       if (!card) return;
-      if (stepRect.top < triggerY) card.classList.add('active');
-      else card.classList.remove('active');
+      (topInDoc(step) < triggerY) ? card.classList.add('active')
+                                  : card.classList.remove('active');
     });
 
     ticking = false;
@@ -133,7 +157,10 @@ function onScroll() {
 
 window.addEventListener('scroll', onScroll, { passive: true });
 window.addEventListener('resize', onScroll, { passive: true });
+window.addEventListener('orientationchange', onScroll);
+document.addEventListener('visibilitychange', onScroll);
 document.addEventListener('DOMContentLoaded', onScroll);
+
 
 
 
@@ -344,7 +371,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 (function() {
   const DURATION_MS = 2000; // 2 Sekunden pro Counter
-  const START_DELAY = 300; // 0,5 Sekunden zwischen den Starts
+  const START_DELAY = 250; // 0,5 Sekunden zwischen den Starts
   const EASE = t => 1 - Math.pow(1 - t, 3); // Ease-out-Cubic
 
   function animateCount(el, delay) {
