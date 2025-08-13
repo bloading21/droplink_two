@@ -26,6 +26,8 @@ window.addEventListener("scroll", () => {
 
 
 
+
+
 // ==========================
 // NAV DROPDOWN (ALLE MENÜS)
 // ==========================
@@ -69,6 +71,113 @@ document.addEventListener('click', (e) => {
 
 
 
+
+
+
+
+
+//preview dynamik
+document.addEventListener("DOMContentLoaded", () => {
+  const previews = document.querySelectorAll('.dashboard_preview');
+  const previewImage = document.getElementById('dashboard_preview_image');
+
+  // Standardmäßig erstes Element aktivieren
+  const first = previews[0];
+  if (first) {
+    first.classList.add('active');
+    const newImage = first.getAttribute('data-image');
+    if (newImage) previewImage.src = newImage;
+  }
+
+  // Klick-Logik für alle Vorschau-Elemente
+  previews.forEach(preview => {
+    preview.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      // Alle deaktivieren
+      previews.forEach(p => p.classList.remove('active'));
+
+      // Geklicktes aktivieren
+      preview.classList.add('active');
+
+      // Bild wechseln
+      const newImage = preview.getAttribute('data-image');
+      if (newImage) previewImage.src = newImage;
+    });
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+//COUNTING NUMBERS
+(function() {
+  const DURATION_MS = 2000; // 2 Sekunden pro Counter
+  const START_DELAY = 250; // 0,5 Sekunden zwischen den Starts
+  const EASE = t => 1 - Math.pow(1 - t, 3); // Ease-out-Cubic
+
+  function animateCount(el, delay) {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        const numEl = el.querySelector('.num');
+        const target = parseFloat(el.getAttribute('data-target') || '100');
+        const startTime = performance.now();
+
+        function frame(now) {
+          const t = Math.min(1, (now - startTime) / DURATION_MS);
+          const eased = EASE(t);
+          numEl.textContent = String(Math.round(target * eased));
+          if (t < 1) {
+            requestAnimationFrame(frame);
+          } else {
+            resolve();
+          }
+        }
+        requestAnimationFrame(frame);
+      }, delay);
+    });
+  }
+
+  const counters = document.querySelectorAll('.counter');
+  let started = false;
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (started) return;
+      if (entry.isIntersecting) {
+        started = true;
+
+        counters.forEach((counter, i) => {
+          animateCount(counter, i * START_DELAY);
+        });
+
+        io.disconnect();
+      }
+    });
+  }, {
+    root: null,
+    rootMargin: "-35% 0px -35% 0px", // mittlere 30% vom Viewport
+    threshold: 0
+  });
+
+  const firstCard = document.querySelector('.triple_card_one');
+  if (firstCard) io.observe(firstCard);
+})();
+
+
+
+
+
+
+
 //Dynmic Tabs
 let currentIndex = 0;               
 const tabs = document.querySelectorAll('.tab');
@@ -100,12 +209,10 @@ tabs.forEach((tab, i) => {
 
 
 
-
+//TIMELINE
 const wildSteps = document.querySelectorAll('.wild-step');
 const wildLine = document.querySelector('.wild-timeline-line');
-
 let ticking = false;
-
 function onScroll() {
   if (ticking) return;
   ticking = true;
@@ -130,7 +237,6 @@ function onScroll() {
     ticking = false;
   });
 }
-
 window.addEventListener('scroll', onScroll, { passive: true });
 window.addEventListener('resize', onScroll, { passive: true });
 document.addEventListener('DOMContentLoaded', onScroll);
@@ -144,15 +250,13 @@ document.addEventListener('DOMContentLoaded', onScroll);
 
 
 
-
+//MON/YEAR TOGGLE
 const monBtn = document.querySelector('.mon');
 const yearBtn = document.querySelector('.year');
 const monatlichContent = document.querySelector('.columns_box');
 const jährlichContent = document.querySelector('.columns_box_year');
-
 let isAnimating = false;
 const DURATION = 400; // entspricht CSS-Transition
-
 function crossfadePanels(showYearly) {
   if (isAnimating) return;
   isAnimating = true;
@@ -175,9 +279,10 @@ function crossfadePanels(showYearly) {
     isAnimating = false;
   }, DURATION);
 }
-
 monBtn.addEventListener('click', () => crossfadePanels(false));
 yearBtn.addEventListener('click', () => crossfadePanels(true));
+
+
 
 
 
@@ -299,36 +404,6 @@ document.querySelectorAll('.faq-question').forEach(button => {
 
 
 
-//preview dynamik
-document.addEventListener("DOMContentLoaded", () => {
-  const previews = document.querySelectorAll('.dashboard_preview');
-  const previewImage = document.getElementById('dashboard_preview_image');
-
-  // Standardmäßig erstes Element aktivieren
-  const first = previews[0];
-  if (first) {
-    first.classList.add('active');
-    const newImage = first.getAttribute('data-image');
-    if (newImage) previewImage.src = newImage;
-  }
-
-  // Klick-Logik für alle Vorschau-Elemente
-  previews.forEach(preview => {
-    preview.addEventListener('click', (e) => {
-      e.preventDefault();
-
-      // Alle deaktivieren
-      previews.forEach(p => p.classList.remove('active'));
-
-      // Geklicktes aktivieren
-      preview.classList.add('active');
-
-      // Bild wechseln
-      const newImage = preview.getAttribute('data-image');
-      if (newImage) previewImage.src = newImage;
-    });
-  });
-});
 
 
 
@@ -341,59 +416,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
-
-
-
-(function() {
-  const DURATION_MS = 2000; // 2 Sekunden pro Counter
-  const START_DELAY = 250; // 0,5 Sekunden zwischen den Starts
-  const EASE = t => 1 - Math.pow(1 - t, 3); // Ease-out-Cubic
-
-  function animateCount(el, delay) {
-    return new Promise(resolve => {
-      setTimeout(() => {
-        const numEl = el.querySelector('.num');
-        const target = parseFloat(el.getAttribute('data-target') || '100');
-        const startTime = performance.now();
-
-        function frame(now) {
-          const t = Math.min(1, (now - startTime) / DURATION_MS);
-          const eased = EASE(t);
-          numEl.textContent = String(Math.round(target * eased));
-          if (t < 1) {
-            requestAnimationFrame(frame);
-          } else {
-            resolve();
-          }
-        }
-        requestAnimationFrame(frame);
-      }, delay);
-    });
-  }
-
-  const counters = document.querySelectorAll('.counter');
-  let started = false;
-
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (started) return;
-      if (entry.isIntersecting) {
-        started = true;
-
-        counters.forEach((counter, i) => {
-          animateCount(counter, i * START_DELAY);
-        });
-
-        io.disconnect();
-      }
-    });
-  }, {
-    root: null,
-    rootMargin: "-35% 0px -35% 0px", // mittlere 30% vom Viewport
-    threshold: 0
-  });
-
-  const firstCard = document.querySelector('.triple_card_one');
-  if (firstCard) io.observe(firstCard);
-})();
