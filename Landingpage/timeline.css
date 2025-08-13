@@ -204,24 +204,21 @@
 
 
 
-/* ==== Mobile-Flackerfix NUR für Handy ==== */
+/* ==== Mobile Fix NUR fürs Handy (Option A) ==== */
 @media (max-width: 768px) {
-  /* Masken aus = weniger Repaints auf iOS/Android */
   .wild-timeline-line {
     -webkit-mask-image: none;
     mask-image: none;
-
-    /* leichte Stabilität nur auf Mobile */
     contain: paint;
     backface-visibility: hidden;
     transform: translateZ(0);
   }
-
-  /* Statt transform: scaleY(...) -> echte Höhe setzen */
   .wild-timeline-line::before {
-    transform: none !important;           /* scaleY abschalten nur mobil */
-    will-change: height;                  /* Browser vorbereiten */
-    transition: none !important;          /* kein Tween beim Scrollen */
-    height: calc(var(--wild-progress, 0) * 100%); /* 0..1 -> 0..100% */
+    /* überschreibt dein Desktop 'inset:0' sauber */
+    top: 0; bottom: auto; left: 0; right: 0;
+    transform: none !important;
+    transition: none !important;
+    will-change: height;
+    height: calc(var(--wild-progress, 0) * 100%);
   }
 }
