@@ -166,7 +166,7 @@
 
   .wild-step {
     width: 100%;
-    left: 0px !important;
+    left: 88px !important;
     padding: 10px 0 10px calc(var(--tl-left-pad) + var(--tl-gap) + var(--tl-line-w));
     text-align: left;
     box-sizing: border-box;
@@ -175,7 +175,7 @@
 
   .wild-step-left,
   .wild-step-right {
-    text-align: right;
+    text-align: left;
   }
 
   .wild-card {
