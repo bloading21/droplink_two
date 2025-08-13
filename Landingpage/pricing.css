@@ -441,7 +441,7 @@ article h1 span{
 }
 
 
-@media(max-width:1050px){ /* MAIN */
+@media(max-width:1250px){ /* MAIN */
     .yearr{
         flex-direction: column;
     }
@@ -468,32 +468,33 @@ article h1 span{
         padding: 7px 14px;
     }
 
-    .jederzeit_kündbar_toggle_br{
-        display: block;
-    }
+
 
     .pricing_trust_bar{
         padding: 5px;
+        width: 90vw;
+        margin-top: -15px;
     }
 
     .pricing_trust_bar_one,
     .pricing_trust_bar_two,
     .pricing_trust_bar_three{
         flex-direction: column;
+        height: 90%;
     }
 
-    .pricing_trust_bar_mother{
-        width: 125%;
-        padding-top: 15px;
-        padding-bottom: 15px;
+    .pricing_trust_bar svg{
+        width: 26px;
     }
 
-    .pricing_trust_bar_mother img{
-        width: 24px;
+    .pricing_trust_bar p{
+        font-size: 14px;
     }
 
-    .pricing_trust_bar_mother p{
-        font-size: 13px;
+    .jederzeit_kündbar_toggle_br{
+        display: none;
     }
+
+
 }
 

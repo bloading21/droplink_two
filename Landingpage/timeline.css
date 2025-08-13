@@ -145,12 +145,57 @@
 
 
 
+@media (max-width: 768px) {
+  :root {
+    --tl-line-w: 4px;     /* Breite der Linie */
+    --tl-gap: 10px;       /* Abstand Linie -> Cards */
+    --tl-left-pad: 20px;  /* Abstand Linie zum linken Rand */
+  }
 
+  .wild-timeline-sec {
+    padding: 40px 12px;
+  }
 
+  .wild-timeline-line {
+    left: var(--tl-left-pad);
+    transform: none;
+    width: var(--tl-line-w);
+  }
 
+  .wild-step {
+    width: 100%;
+    left: 0 !important;
+    padding: 10px 0 10px calc(var(--tl-left-pad) + var(--tl-gap) + var(--tl-line-w));
+    text-align: left;
+    box-sizing: border-box;
+  }
 
+  .wild-step-left,
+  .wild-step-right {
+    text-align: left;
+  }
 
+  .wild-card {
+    width: 90%;
+    max-width: 320px;
+    transform: scale(0.95);
+    transform-origin: left center;
+    opacity: 1;
+  }
 
+  .wild-card.active {
+    transform: scale(0.97);
+  }
+
+  .wild-card h3 {
+    font-size: 1.15rem;
+  }
+
+  .wild-card p {
+    font-size: 0.98rem;
+    line-height: 1.5;
+  }
+}
 
 
 

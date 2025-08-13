@@ -2,7 +2,8 @@
 
 .section_eins{
     width: 100%;
-    height: 1110px;
+    height: 1260px;
+    height: fit-content;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -10,24 +11,24 @@
     background-color: white;
     position: relative;
     padding-top: 140px;
-
     border: 0.5px solid var(--border-color);
     border-top: none;
-
-
     overflow: hidden;
-
 }
+
+
 
 .section_eins::before {
     content: "";
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(#00000051 1.5px, transparent 1.5px);
-    /* Neuen, aggressiveren Verlauf */
+    background-image:
+      radial-gradient(rgba(0,0,0,.06) 1px, transparent 1px);
+    background-size: 20px 20px;
     mask-image: linear-gradient(to top, black 20%, transparent 100%);
     -webkit-mask-image: linear-gradient(to top, black 20%, transparent 100%);
-    z-index: -1;
+    display: none;
+
 }
 
 .section_eins span:hover::after {
@@ -43,11 +44,11 @@
 }
 
 .Überschriftcontainer h1{
-    font-size: clamp(20px, 5vw, 60px);
+    font-size: clamp(30px, 5vw, 60px);
 }
 
 .Überschriftcontainer span{
-    font-size: clamp(20px, 5vw, 60px);
+    font-size: clamp(30px, 5vw, 60px);
 }
 
 .header_farbverlauf{
@@ -138,6 +139,16 @@
     align-items: center;
     border-radius: 14px;
     margin-top: 65px;
+
+}
+
+.dashboard_preview_select_split_one,
+.dashboard_preview_select_split_two{
+    width: 49%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .dashboard_preview_select h2{
@@ -150,7 +161,7 @@
 .dashboard_preview_three,
 .dashboard_preview_for{
     height: 100%;
-    width: 24%;
+    width: 48%;
     border: 1px solid var(--border-color);
     border-radius: 14px ;
     transition: 0.3s ease;
@@ -353,7 +364,8 @@
 .image_rahmen_dos{
     width: 73vw;
     max-width: 1350px;
-    height: 500px;
+    aspect-ratio: 16 / 7.5;
+
     border: 1px solid var(--border-color);
     border-radius: 20px  20px 0px 0px;
     border-bottom: none;
@@ -365,6 +377,8 @@
     justify-content: center;
     z-index: auto;
     margin-top: auto;
+
+    margin-top: 40px;
 
 }
 
@@ -386,6 +400,7 @@
     z-index: -1;
     border: 1px solid var(--border-color);
     background-color: rgba(128, 128, 128, 0.043);
+
 }
 
 .image_rahmen_dos::after{
@@ -982,7 +997,8 @@
     margin-top: 70px;
     padding: 35px;
     border-radius: 25px;
-    
+
+    border: 1px solid var(--border-color);
     
 }
 
@@ -1256,7 +1272,6 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 60px;
-
     grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); 
 
 }
@@ -1806,7 +1821,7 @@
     margin-top: 20px;
     z-index: 10;
     padding-top: 40px;
-    font-size: clamp(20px, 5vw, 60px);
+    font-size: clamp(39px, 5vw, 60px);
     padding-bottom: 30px;
   }
 
@@ -1922,7 +1937,7 @@
         align-items: center;
         gap: 10px;
         border-radius: 50px;
-        padding: 6px 16px;
+        padding: 3px 16px;
         margin-bottom: 10px;
 
 
@@ -1932,8 +1947,8 @@
         font-size: clamp(16px, 1.5vw, 50px);
     }
 
-    .shopify_container img{
-        width: clamp(16px, 1.5vw, 50px);
+    .shopify_container svg{
+        width: clamp(18px, 1.5vw, 50px);
     }
 
     .testen_dos{
@@ -1954,6 +1969,8 @@
 
     .section_review{
         height: fit-content;
+        gap: 25px;
+        width: 90%;
 
     }
 
@@ -1978,7 +1995,7 @@
     }
 
     .wild-timeline-sec{
-        display: none;
+        ddisplay: none;
     }
 
 
@@ -1992,30 +2009,40 @@
         animation: slideLogos 8s linear infinite;
     }
 
-    .section_eins{
-        margin-top: -170px;
-    }
+
 
     .section_x,
     .section_y,
-    .section_z{
-        flex-direction: column;
+    .section_z,
+    .section_adlibrary{
+        flex-direction: column-reverse;
         margin-top: 70px;
         gap: 30px;
+        padding: 20px;
+        border: none;
+        border: 1px solid var(--border-color);
+        box-shadow: var(--standard-box-shadow);
+        width: 82%;
     }
 
-    .section_y{
-        flex-direction: column-reverse;
+    .section_y,
+    .section_adlibrary{
+        flex-direction: column;
     }
+
 
     .section_x_content,
     .section_y_content,
-    .section_z_content{
-    width: 90%;
+    .section_z_content,
+    .section_adlibrary_content{
+    width: 100%;
     }
 
-    .section_x_img{
-        width: 90%;
+    .section_x_img,
+    .section_y_img,
+    .section_z_img,
+    .section_adlibrary_img{
+        width: 100%;
     }
 
     .Überschriftcontainer{
@@ -2026,19 +2053,14 @@
     }
         
     .section_eins{
-        height: 730px;
+        height: 1080px;
+        height: fit-content;
         padding-top: 20px;
     }
 
-    .image_rahmen{
-        width: 97%;
-        height: 97%;
-    }
-        
     .image_rahmen_dos{
-        width: 92vw;
+        width: 90vw;
         max-width: 1350px;
-        height: 218px;
     }
 
     .img_box{
@@ -2057,6 +2079,8 @@
 
     .section_sieben{
         height: 600px;
+        width: 100%;
+        border-radius: 0;
     }
 
     .section_sieben_line_one {
@@ -2134,6 +2158,42 @@
     .tab{
         font-size: 17px;
     }
+
+    .section_triple_card{
+        flex-direction: column;
+        height: 680px;
+
+    }
+
+    .triple_card_one,
+    .triple_card_two,
+    .triple_card_three{
+        width: 100%;
+        height: 31%;
+        max-width: 500px;
+    }
+
+    .dashboard_preview_select{
+        width: 90%;
+        height: 130px;
+    }
+
+    .dashboard_preview_select_split_one,
+    .dashboard_preview_select_split_two {
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 12px;
+
+    }
+
+    .dashboard_preview{
+        width: 100%;
+        height: 48%;
+    }
+
+    .dashboard_preview_select h2{
+        font-size: 16px;
+    }
 }
 
 /* Small Screens (z.B. Smartphones) */
@@ -2159,38 +2219,42 @@
     }
 
     .section_sieben{
-        height: 570px;
+        height: 530px;
     }
 
     .shopify_logo_icon{
         position: absolute;
-        top: 50px;
-        left: 100px;
-        width: 60px;
+        top: 20px;
+        left: 80px;
+        transform: scale(0.8); /* 80% der Originalgröße */
+
 
     }
     
     .ebay_icon_logo{
         position: absolute;
-        top: 50px;
-        right: 100px;
-        width: 60px;
+        top: 20px;
+        right: 80px;
+        transform: scale(0.8); /* 80% der Originalgröße */
+
+
 
     }
     
     .amazon_logo_icon{
         position: absolute;
-        top: 160px;
-        left: 80px;
-        width: 60px;
+        top: 140px;
+        left: 60px;
+        transform: scale(0.8); /* 80% der Originalgröße */
 
     }
 
     .woocomerce_icon_logo{
         position: absolute;
-        top: 160px;
-        right: 80px;
-        width: 60px;
+        top: 140px;
+        right: 60px;
+        transform: scale(0.8); /* 80% der Originalgröße */
+
     }
 
     .section_sieben_line_one {
