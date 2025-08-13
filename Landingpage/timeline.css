@@ -87,7 +87,7 @@
 
   /* GPU-Layer + transform kombinieren */
   will-change: transform;
-  transform: translateZ(0) scale(0.9);
+  transform: translateZ(0) scale(0.98);
 
   /* Animation nur auf transform & opacity */
   transition: transform 0.35s ease, opacity 0.25s ease;
