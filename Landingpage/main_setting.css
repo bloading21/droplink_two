@@ -604,8 +604,8 @@
     width: 100%;
     text-align: left;
     padding: 16px;
-    font-size: 1.1rem;
-    font-weight: bold;
+    font-size: 1.7rem;
+    font-weight: 800;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1326,7 +1326,6 @@
     margin: auto;
     max-width: 1200px;
     margin-top: 80px;
-    display: none;
 
 }
 

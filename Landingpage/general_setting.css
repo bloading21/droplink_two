@@ -1,4 +1,5 @@
 :root {
+  --primary-color:   #F53179;
   --primary-color: #AC51FF;
   --secondary-color: #235AEA;
   --border-color: rgba(128, 128, 128, 0.234);
@@ -17,15 +18,12 @@ a {
   font-size: 20px;
 }
 
-
-
 body {
   min-height: 100vh;
   background-color: white;
   overflow-x: hidden;
   font-family: 'Inter', sans-serif;
 }
-
 
 h1 {
   font-size: 55px;
@@ -41,9 +39,7 @@ p {
 
 li{
   list-style: none;
-
 }
-
 
 
 a {
@@ -64,5 +60,3 @@ a::after {
   border-top-right-radius: 8px;
   pointer-events: none;
 }
-
-
