@@ -176,7 +176,7 @@
 }
 
 .columns_zwei::before{
-    border: 1.5px solid var(--primary-color);
+    border: 2.5px solid var(--primary-color);
     box-shadow: 0 0 60px -10px rgba(168, 85, 247, 0.4);
 }
 
@@ -213,8 +213,9 @@
 
 .columns_zwei{
     box-shadow: 0 0 60px -10px rgba(168, 85, 247, 0.4);
-    border: 1.5px solid var(--primary-color);
+    border: 2.5px solid var(--primary-color);
     height: fit-content;
+    cursor: pointer;
 }
 
 
@@ -285,7 +286,6 @@
     padding: 10px 0 10px 0;
     margin: 8px 0 3px 0;
     color: white;
-    transition: 0.3s ease;
     border: 1px solid var(--primary-color);
 }
 
@@ -320,6 +320,13 @@
     width: 100%;
 }
 
+.butt{
+    width: 20px;
+    height: 20px;
+    height: 100%;
+    width: 100%;
+}
+
 .pricing_header_pro_badge{
     width: fit-content;
     border-radius: 25px;
@@ -328,11 +335,26 @@
     padding: 7px 15px;
     font-size: 17px;
     border: 1px solid #EFDDFC;
-
     padding: 6px 10px;
-    background-color: var(--primary-color);
     color: white;
     border: 1px solid var(--primary-color);
+    background: linear-gradient(to top right, #E832F8 0%, #AC51FF 90%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+    position: relative;
+
+}
+
+.pricing_header_pro_badge::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 50%;
+    width: 100%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.2), transparent);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    pointer-events: none;
 }
 
 .year_benefit_pricing{
@@ -397,6 +419,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid var(--border-color);
 }
 
 .pricing_trust_bar p{
