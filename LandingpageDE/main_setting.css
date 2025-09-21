@@ -17,11 +17,11 @@
 }
 
 .section_eins_blur{
-    height: 550px;
+    height: 700px;
     width: 100%;
     position: absolute;
     background-color: var(--primary-color);
-    background-color: #ab51ff60;
+    background-color: #ab51ffa7;
     bottom: -50px;
     z-index: -10000000000;
 }
@@ -911,6 +911,9 @@
     border: 2px solid rgba(255, 255, 255, 0.215);
 }
 
+.section_a{
+    display: none;
+}
 
 
 .section_a_subcontainer{
@@ -1396,7 +1399,7 @@
 }
 
 .section_triple_card p{
-    font-size: 22px;
+    font-size: 30px;
     color: #000000;
     font-weight: 600;
 }

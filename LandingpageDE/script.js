@@ -178,7 +178,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+//Dynmic Tabs
+let currentIndex = 0;               
+const tabs = document.querySelectorAll('.tab');
+const contents = document.querySelectorAll('.feature_content');
+let interval = setInterval(nextSlide, 4500);
+function nextSlide() {
+  currentIndex = (currentIndex + 1) % tabs.length;
+  showSlide(currentIndex);
+}
+function showSlide(index) {
+  tabs.forEach(t => t.classList.remove('active'));
+  contents.forEach(c => c.classList.remove('active'));
 
+  tabs[index].classList.add('active');
+  contents[index].classList.add('active');
+}
+// Optional: Manuell klicken
+tabs.forEach((tab, i) => {
+  tab.addEventListener('click', () => {
+    clearInterval(interval); // Auto stoppen beim Klick
+    currentIndex = i;
+    showSlide(i);
+  });
+});
 
 
 
@@ -292,6 +315,91 @@ document.querySelectorAll('.faq-question').forEach(button => {
     }
   });
 });
+
+
+
+
+
+
+//BLOG POST
+;(() => {
+  /* ---------- Settings ---------- */
+  const STEP_PCT = 100 / 3;        // 33.333…  (3 Karten sichtbar)
+  const AUTO_MS  = 3500;           // Autoplay
+
+  /* ---------- DOM ---------- */
+  const track = document.getElementById('carouselTrack');
+  const box   = document.querySelector('.blogcarousel_container');
+
+  /* ---------- Helper: aktive Mitte markieren ---------- */
+  const setActive = () => {
+    [...track.children].forEach(c => c.classList.remove('active'));
+    if (track.children[1]) track.children[1].classList.add('active');
+  };
+
+  /* ---------- Slide nach rechts ---------- */
+  const slideNext = () => {
+    track.style.transition = 'transform .5s ease';
+    track.style.transform  = `translateX(-${STEP_PCT}%)`;
+
+    track.addEventListener('transitionend', function cb () {
+      track.removeEventListener('transitionend', cb);
+      track.style.transition = 'none';
+      track.appendChild(track.firstElementChild); // erste Karte ans Ende
+      track.style.transform = 'translateX(0)';
+      requestAnimationFrame(setActive);
+    }, { once: true });
+  };
+
+  /* ---------- Slide nach links ---------- */
+  const slidePrev = () => {
+    track.style.transition = 'none';
+    track.insertBefore(track.lastElementChild, track.firstElementChild); // letzte Karte vorn
+    track.style.transform = `translateX(-${STEP_PCT}%)`;
+
+    requestAnimationFrame(() => {
+      track.style.transition = 'transform .5s ease';
+      track.style.transform  = 'translateX(0)';
+
+      track.addEventListener('transitionend', function cb () {
+        track.removeEventListener('transitionend', cb);
+        setActive();
+      }, { once: true });
+    });
+  };
+
+  /* ---------- Klick-Navigation auf Karten ---------- */
+  track.addEventListener('click', e => {
+    const card = e.target.closest('.blogcarousel_card');
+    if (!card) return;
+
+    /* Welche DOM-Position hat diese Karte? */
+    const idx = [...track.children].indexOf(card);
+
+    if (idx === 0) {                // linke Karte
+      e.preventDefault();           // Link nicht sofort auslösen
+      slidePrev();
+    } else if (idx === 2) {         // rechte Karte
+      e.preventDefault();
+      slideNext();
+    }
+    /* idx === 1 → mittlere Karte: normaler Link-Klick, kein Slide */
+  });
+
+  /* ---------- Buttons global ---------- */
+  window.nextSlide = slideNext;
+  window.prevSlide = slidePrev;
+
+  /* ---------- Autoplay ---------- */
+  let auto = setInterval(slideNext, AUTO_MS);
+  box.addEventListener('mouseenter', () => clearInterval(auto));
+  box.addEventListener('mouseleave', () => auto = setInterval(slideNext, AUTO_MS));
+
+  /* ---------- Initial ---------- */
+  setActive();
+})();
+
+
 
 
 
