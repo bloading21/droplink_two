@@ -150,10 +150,13 @@ nav ul {
     flex-direction: column;
 }
 
-.dropdown_row_loesungen_a p{
+.dropdown_row_loesungen_a p,
+.dropdown_row_resources_a p{
     font-size: 18px;
     font-weight: 550;
 }
+
+
 
 
 
@@ -231,7 +234,8 @@ nav ul {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--primary-color);
+    background-color: #ab51ff25;
+    color: var(--primary-color);
 }
 
 .dropdown_row_icons svg{

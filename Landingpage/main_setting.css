@@ -219,14 +219,15 @@
   .dashboard_preview_two_child,
   .dashboard_preview_three_child,
   .dashboard_preview_for_child{
-    width: 98.8%;
+    width: 94%;
     height: 96.5%;
     border-radius: 12px;
     background-color: white;
     z-index: 200;
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
+    padding-left: 13px;
 }
 
 
@@ -436,7 +437,7 @@
 
 .image_rahmen_dos{
     width: 73vw;
-    max-width: 1350px;
+    max-width: 1200px;
     height: 450px;
 
     border: 1px solid var(--border-color);

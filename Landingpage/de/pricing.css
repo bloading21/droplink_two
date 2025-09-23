@@ -105,11 +105,11 @@
 
 .columns_box_year{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     height: 70%;
-    gap: 15px;
+
 
 }
 
@@ -177,7 +177,7 @@
 }
 
 .columns_zwei::before{
-    border: 2.5px solid var(--primary-color);
+    border: 4px solid var(--primary-color);
     box-shadow: 0 0 60px -10px rgba(168, 85, 247, 0.4);
 }
 
@@ -214,7 +214,7 @@
 
 .columns_zwei{
     box-shadow: 0 0 60px -10px rgba(168, 85, 247, 0.4);
-    border: 2.5px solid var(--primary-color);
+    border: 4px solid var(--primary-color);
     height: fit-content;
     cursor: pointer;
 }
@@ -237,6 +237,22 @@
     transition: 0.3s ease;
     padding: 15px 0 15px 25px;
 }
+
+.lis_padding_left{
+    margin-left: 5px !important;
+}
+
+.beenfits_low_boldness{
+    font-weight: 100;
+}
+
+.annual_billing{
+    font-size: 16px;
+    color: black;
+    text-decoration: underline;
+
+}
+
 
 .row_one_one ul,
 .row_one_two ul,
@@ -389,7 +405,6 @@
 .pricing_bulletpoint_border{
     width: 100%;
     height: 1px;
-    color: var(--border-color);
     background-color: var(--border-color);
 }
 
@@ -416,6 +431,8 @@
     justify-content: center;
     align-items: center;
     border: 1px solid var(--border-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.082);
+
 }
 
 .pricing_trust_bar p{
