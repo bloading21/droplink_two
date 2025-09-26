@@ -84,12 +84,13 @@
 
 .schwaben{
     padding: 7px 20px;
-
-
-    color: #00883F;
-    font-size: 16px;
+    width: fit-content;
     margin: auto;
     margin-top: 15px;
+    border-radius: 40px;
+    font-size: 16px;
+
+    color: #00883F;
 }
 
 .columns_box{
@@ -230,7 +231,6 @@
     list-style: none;
     padding: 5px 15px;
     font-weight: bold;
-
     border-radius: 10px;
     transition: 0.3s ease;
     padding: 15px 0 15px 25px;
