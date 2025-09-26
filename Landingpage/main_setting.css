@@ -158,8 +158,8 @@
   }
   
 .dashboard_preview_select{
-    width: 75vw;
-    max-width: 1373px;
+    width: 77vw;
+    max-width: 1250px;
     height: 67px;
     display: flex;
     justify-content: space-between;
@@ -263,13 +263,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: var(--standard-box-shadow);
-
-
     background-color: #ab51ff12;
-    border: 1px solid var(--primary-color);
+    background-color: white;
     color: var(--primary-color);
     border: 1px solid #ab51ff00;
+    border: 1px solid var(--border-color);
 
 }
 
@@ -389,6 +387,7 @@
   .dashboard_preview.active .dashboard_preview_one_child_content_imagecontainer svg  {
     color: var(--primary-color);
     color: white;
+
 
   }
   .dashboard_preview.active .dashboard_preview_two_child_content_imagecontainer svg  {
@@ -610,7 +609,7 @@
 
 }
 .chrome_extension_button{
-    padding: 10px 15px;
+    padding: 8px 15px;
     border: 1px solid var(--border-color);
     color: black;
     border-radius: 12px;
@@ -622,7 +621,7 @@
     transition: 0.3s ease;
     background-color: white;    
     font-size: 18px;
-    transition: box-shadow 0.3s ease-in-out;    
+    transition: box-shadow 0.15s ease-in-out;    
     box-shadow: none;
     font-weight: bold;
 
@@ -685,7 +684,7 @@
     width: 100%;
     text-align: left;
     padding: 16px;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 900;
     display: flex;
     justify-content: space-between;
@@ -715,7 +714,7 @@
 }
 
 .faq-answer-content p{
-    font-size: 22px;
+    font-size: 18px;
 }
 
 .section_sechs{
@@ -1149,9 +1148,11 @@
 
 }
 
-.hzu{
-    display: none;
+.icons_from_preview{
+    color: black;
 }
+
+
 
 .section_x_img,
 .section_y_img,
@@ -1239,8 +1240,8 @@
 .section_y_content p,
 .section_z_content p,
 .section_adlibrary_content p{
-    font-size: 20px;
-    line-height: 150%;
+    font-size: 18px;
+    line-height: 135%;
     color: #333333;
 }
 
@@ -1250,7 +1251,7 @@
 .section_y h1,
 .section_z h1,
 .section_adlibrary h1{
-    font-size: 32px;
+    font-size: 36px;
     color: #333333;
     color: var(--primary-color);
 }
@@ -1388,7 +1389,6 @@
     margin-top: 30px;
     grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); 
     margin-bottom: 30px;
-
 }
 
 .section_triple_card h1{
@@ -1405,7 +1405,7 @@
 .section_triple_card span{
 
 
-    font-size: 90px;
+    font-size: 68px;
 }
 
 .triple_card_one,

@@ -84,15 +84,12 @@
 
 .schwaben{
     padding: 7px 20px;
-    width: fit-content;
+
+
+    color: #00883F;
+    font-size: 16px;
     margin: auto;
     margin-top: 15px;
-    border-radius: 40px;
-    font-size: 16px;
-
-    background-color: #F0FDF4;
-    color: #00883F;
-    border: 1px solid #C4ECD0;
 }
 
 .columns_box{
@@ -233,6 +230,7 @@
     list-style: none;
     padding: 5px 15px;
     font-weight: bold;
+
     border-radius: 10px;
     transition: 0.3s ease;
     padding: 15px 0 15px 25px;
@@ -282,8 +280,10 @@
     background-color: white;
     transition: 0.3s ease;
     border: 0.5px solid black;
-
+    border: 2px solid var(--border-color);
+    box-shadow: var(--standard-box-shadow);
     box-shadow: none;
+
     transition: box-shadow 0.3s ease;
 
 
@@ -387,6 +387,36 @@
     border: 1px solid #C4ECD0;
 }
 
+.ziggi{
+    width: fit-content;
+    border-radius: 25px;
+    background-color: #FAF5FF;
+    color: #9222DF;
+    padding: 7px 15px;
+    font-size: 17px;
+    border: 1px solid #EFDDFC;
+    padding: 6px 10px;
+    color: white;
+    border: 1px solid var(--primary-color);
+    background: linear-gradient(to top right, #E832F8 0%, #AC51FF 90%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+    position: relative;
+
+}
+
+.ziggi::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 50%;
+    width: 100%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.2), transparent);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    pointer-events: none;
+}
+
 .plan_vergleich{
     text-align: center;
     font-size: 17px;
@@ -394,8 +424,6 @@
     transition: 0.3s ease;
     margin-top: -20px;
     margin-bottom: 50px;
-
-
 }
 
 .plan_vergleich:hover{

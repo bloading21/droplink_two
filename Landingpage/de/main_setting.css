@@ -156,14 +156,18 @@
   }
   
 .dashboard_preview_select{
-    width: 75vw;
-    max-width: 1373px;
+    width: 77vw;
+    max-width: 1250px;
     height: 67px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-radius: 14px;
     margin-top: 65px;
+}
+
+.icons_from_preview{
+    color: black;
 }
 
 .dashboard_preview_select_split_one,
@@ -261,9 +265,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: var(--standard-box-shadow);
-
-
     background-color: #ab51ff12;
     border: 1px solid var(--primary-color);
     color: var(--primary-color);
@@ -620,11 +621,10 @@
     transition: 0.3s ease;
     background-color: white;    
     font-size: 18px;
-    transition: box-shadow 0.3s ease-in-out;    
     box-shadow: none;
     font-weight: bold;
-
-
+    transition: box-shadow 0.15s ease-in-out;    
+ 
 }
 
 .chrome_extension_button:hover{
@@ -1174,7 +1174,7 @@
 .section_z_content h1,
 .section_x_content h1,
 .section_adlibrary_content h1 {
-    font-size: 32px;
+    font-size: 36px;
     background: linear-gradient(to top right, #AC51FF 0%, #E832F8 60%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -1240,8 +1240,8 @@
 .section_y_content p,
 .section_z_content p,
 .section_adlibrary_content p{
-    font-size: 20px;
-    line-height: 150%;
+    font-size: 18px;
+    line-height: 135%;
     color: #333333;
 }
 
@@ -1398,7 +1398,7 @@
 }
 
 .section_triple_card p{
-    font-size: 30px;
+    font-size: 22px;
     color: #000000;
     font-weight: 600;
 }
@@ -1406,7 +1406,7 @@
 .section_triple_card span{
 
 
-    font-size: 90px;
+    font-size: 68px;
 }
 
 .triple_card_one,
