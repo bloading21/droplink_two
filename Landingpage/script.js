@@ -227,6 +227,8 @@ document.addEventListener('DOMContentLoaded', onScroll);
 
 
 
+
+
 //MON/YEAR TOGGLE
 const monBtn = document.querySelector('.mon');
 const yearBtn = document.querySelector('.year');
@@ -292,19 +294,6 @@ document.querySelectorAll('.faq-question').forEach(button => {
     }
   });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
